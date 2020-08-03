@@ -18,9 +18,10 @@ export class PostService {
 
     return this.http.get<Post[]>(url)
       .pipe(
-        retry(3),
+        retry(2),
         catchError(this.handleError),
-        shareReplay()
+        shareReplay(),
+        tap(posts => console.log(posts))
       );
   }
 
