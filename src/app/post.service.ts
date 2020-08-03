@@ -8,7 +8,7 @@ import { Post } from './post';
   providedIn: 'root'
 })
 
-export class PostsServiceService {
+export class PostService {
 
   constructor(private http: HttpClient) { }
 
@@ -20,8 +20,7 @@ export class PostsServiceService {
       .pipe(
         retry(3),
         catchError(this.handleError),
-        shareReplay(),
-        tap(posts => console.log(posts))
+        shareReplay()
       );
   }
 
