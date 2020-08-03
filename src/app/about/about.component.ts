@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
+import { Post } from '../post';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -11,10 +13,12 @@ export class AboutComponent implements OnInit {
 
   constructor(private ps: PostService) { }
 
+  data: Post[];
+
   ngOnInit(): void {
 
     this.ps.getPosts()
-      .subscribe();
+      .subscribe((data): Post[] => this.data = { ...data });
   }
 
 }

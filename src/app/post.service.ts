@@ -21,7 +21,6 @@ export class PostService {
         retry(2),
         catchError(this.handleError),
         shareReplay(),
-        tap(posts => console.log(posts))
       );
   }
 
