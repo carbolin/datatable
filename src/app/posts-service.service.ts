@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry, tap } from 'rxjs/operators';
+import { catchError, retry, tap, shareReplay } from 'rxjs/operators';
 import { Post } from './post';
 
 @Injectable({
@@ -20,6 +20,7 @@ export class PostsServiceService {
       .pipe(
         retry(3),
         catchError(this.handleError),
+        shareReplay(),
         tap(posts => console.log(posts))
       );
   }

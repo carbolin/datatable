@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DatatableComponent } from './datatable/datatable.component';
+import { AboutComponent } from './about/about.component';
 
-const routes: Routes = [{
-  path: 'datatable',
-  component: DatatableComponent
-}];
+const routes: Routes = [
+  {
+    path: 'datatable',
+    component: DatatableComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

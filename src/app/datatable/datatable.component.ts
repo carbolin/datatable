@@ -10,6 +10,7 @@ import { DatatableDataSource, DatatableItem } from './datatable-datasource';
   styleUrls: ['./datatable.component.scss']
 })
 export class DatatableComponent implements AfterViewInit, OnInit {
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DatatableItem>;
@@ -20,6 +21,7 @@ export class DatatableComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.dataSource = new DatatableDataSource();
+
   }
 
   ngAfterViewInit(): void {
