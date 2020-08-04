@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { fromEvent, interval, merge } from 'rxjs';
 
 
 @Component({
@@ -19,6 +20,16 @@ export class AboutComponent implements OnInit {
 
     this.ps.getPosts()
       .subscribe((data): Post[] => this.data = { ...data });
+
+    const clicks$ = fromEvent(document, 'click');
+    const timer$ = interval(1000);
+    const merged = merge(clicks$, timer$);
+
+    merged.pipe(
+      take(25)
+    )
+      .subscribe(val => console.log(val));
+
   }
 
 }
